@@ -4,9 +4,11 @@
 
 (function () {
 
-    var card = document.getElementById("card");
-    var open = document.getElementById("open");
-    var close = document.getElementById("close");
+    const card = document.getElementById("card");
+    const open = document.getElementById("open");
+    const close = document.getElementById("close");
+
+    if (!card || !open || !close) return;
 
     open.addEventListener("click", function () {
 
@@ -62,10 +64,13 @@ window.addEventListener("load", function () {
 
 function createHeart() {
 
+    const heartsContainer = document.querySelector(".hearts");
+
+    if (!heartsContainer) return;
+
     const heart = document.createElement("div");
 
     heart.className = "heart";
-
     heart.innerHTML = "❤";
 
     heart.style.left = Math.random() * 100 + "%";
@@ -76,7 +81,7 @@ function createHeart() {
     heart.style.animationDuration =
         (5 + Math.random() * 6) + "s";
 
-    document.querySelector(".hearts").appendChild(heart);
+    heartsContainer.appendChild(heart);
 
     setTimeout(() => {
         heart.remove();
@@ -95,33 +100,15 @@ const storyBtn = document.getElementById("nextPage");
 const storyBook = document.getElementById("storyBook");
 const card = document.getElementById("card");
 
-if (storyBtn) {
+if (storyBtn && storyBook && card) {
 
     storyBtn.onclick = function () {
 
         // Show story
         storyBook.style.display = "block";
 
-        // Remove the 3D card effect
+        // Disable the greeting card's 3D environment
         card.classList.add("story-mode");
-
-        // Make sure story is facing normally
-        storyBook.style.transform = "none";
-        storyBook.style.transformStyle = "flat";
-
-        // Make every story page face normally
-        document.querySelectorAll(".story-page").forEach(page => {
-
-            page.style.transform =
-                "translateY(60px)";
-
-            page.style.backfaceVisibility =
-                "visible";
-
-            page.style.transformStyle =
-                "flat";
-
-        });
 
         // Scroll to story
         setTimeout(function () {
@@ -139,7 +126,7 @@ if (storyBtn) {
 
 
 // ================================
-// PHOTO / STORY FADE ANIMATION
+// STORY PAGE FADE ANIMATION
 // ================================
 
 const observer = new IntersectionObserver((entries) => {
@@ -148,12 +135,8 @@ const observer = new IntersectionObserver((entries) => {
 
         if (entry.isIntersecting) {
 
-            entry.target.style.opacity = 1;
-
-            // IMPORTANT:
-            // Do NOT use rotateY here.
-            entry.target.style.transform =
-                "translateY(0px)";
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
 
         }
 
@@ -164,18 +147,19 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 
+// ================================
+// INITIAL STORY PAGE STATE
+// ================================
+
 document.querySelectorAll(".story-page").forEach(page => {
 
-    page.style.opacity = 0;
+    page.style.opacity = "0";
 
     page.style.transform =
         "translateY(60px)";
 
     page.style.transition =
         "opacity 1s ease, transform 1s ease";
-
-    page.style.backfaceVisibility =
-        "visible";
 
     observer.observe(page);
 
