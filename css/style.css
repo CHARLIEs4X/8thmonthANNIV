@@ -534,3 +534,28 @@ font-size:18px;
     backface-visibility: visible !important;
     -webkit-backface-visibility: visible !important;
 }
+/* ================================
+   STORY BOOK 3D FIX
+================================ */
+
+#card.story-mode{
+    transform:none !important;
+    transform-style:flat !important;
+    perspective:none !important;
+}
+
+#card.story-mode #storyBook{
+    transform:none !important;
+    transform-style:flat !important;
+    perspective:none !important;
+}
+
+#card.story-mode .story-page{
+    transform-style:flat !important;
+    backface-visibility:visible !important;
+}
+
+#card.story-mode .story-page img{
+    transform:none !important;
+    backface-visibility:visible !important;
+}
