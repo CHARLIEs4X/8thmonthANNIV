@@ -100,35 +100,89 @@ const storyBtn = document.getElementById("nextPage");
 const storyBook = document.getElementById("storyBook");
 const card = document.getElementById("card");
 
-if (storyBtn) {
+if (storyBtn && storyBook && card) {
 
     storyBtn.onclick = function () {
 
-        // Show story
-        storyBook.style.display = "block";
+        // --------------------------------
+        // REMOVE ALL GREETING CARD STATES
+        // --------------------------------
 
-        // Activate story mode
+        card.classList.remove("open-half");
+        card.classList.remove("open-fully");
+        card.classList.remove("close-half");
+
+        // --------------------------------
+        // ACTIVATE STORY MODE
+        // --------------------------------
+
         card.classList.add("story-mode");
 
-        // Remove ALL 3D transformations
+        // --------------------------------
+        // SHOW STORY
+        // --------------------------------
+
+        storyBook.style.display = "block";
+
+        // --------------------------------
+        // REMOVE 3D TRANSFORM
+        // --------------------------------
+
         card.style.transform = "none";
+        card.style.webkitTransform = "none";
+
         card.style.transformStyle = "flat";
+        card.style.webkitTransformStyle = "flat";
+
         card.style.perspective = "none";
 
         storyBook.style.transform = "none";
-        storyBook.style.transformStyle = "flat";
+        storyBook.style.webkitTransform = "none";
 
-        // Make sure every story page is normal
-        document.querySelectorAll(".story-page").forEach(page => {
+        storyBook.style.transformStyle = "flat";
+        storyBook.style.webkitTransformStyle = "flat";
+
+        // --------------------------------
+        // RESET STORY PAGES
+        // --------------------------------
+
+        document.querySelectorAll(".story-page").forEach(function(page) {
+
+            page.style.opacity = "0";
 
             page.style.transform = "translateY(60px)";
+            page.style.webkitTransform = "translateY(60px)";
+
             page.style.backfaceVisibility = "visible";
             page.style.webkitBackfaceVisibility = "visible";
+
             page.style.transformStyle = "flat";
+            page.style.webkitTransformStyle = "flat";
+
+            // Reset photos specifically
+            const image = page.querySelector("img");
+
+            if (image) {
+
+                image.style.transform = "none";
+                image.style.webkitTransform = "none";
+
+                image.style.transformStyle = "flat";
+                image.style.webkitTransformStyle = "flat";
+
+                image.style.backfaceVisibility = "visible";
+                image.style.webkitBackfaceVisibility = "visible";
+
+                image.style.rotate = "0deg";
+                image.style.scale = "1";
+            }
 
         });
 
-        // Scroll to story
+        // --------------------------------
+        // SCROLL TO STORY
+        // --------------------------------
+
         setTimeout(function () {
 
             storyBook.scrollIntoView({
