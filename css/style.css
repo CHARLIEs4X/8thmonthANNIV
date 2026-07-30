@@ -613,3 +613,60 @@ margin-bottom:18px;
 .shadow{
     display:none;
 }
+/* =========================================
+   FINAL FIX — STORY MUST NEVER MIRROR
+========================================= */
+
+/* Completely detach story from greeting-card 3D */
+#card.story-mode {
+    transform: none !important;
+    transform-style: flat !important;
+    perspective: none !important;
+}
+
+/* Story container */
+#card.story-mode #storyBook {
+    transform: none !important;
+    transform-style: flat !important;
+    perspective: none !important;
+    backface-visibility: visible !important;
+    -webkit-transform: none !important;
+}
+
+/* Story cards */
+#card.story-mode .story-page {
+    transform: none !important;
+    transform-style: flat !important;
+    perspective: none !important;
+    backface-visibility: visible !important;
+    -webkit-transform: none !important;
+    -webkit-transform-style: flat !important;
+}
+
+/* STORY IMAGES — FORCE NORMAL ORIENTATION */
+#card.story-mode .story-page img {
+    transform: none !important;
+    rotate: none !important;
+    scale: 1 !important;
+    transform-style: flat !important;
+    backface-visibility: visible !important;
+    -webkit-transform: none !important;
+    -webkit-transform-style: flat !important;
+    -webkit-backface-visibility: visible !important;
+}
+
+/* Text must also be normal */
+#card.story-mode .story-page h1,
+#card.story-mode .story-page h2,
+#card.story-mode .story-page p {
+    transform: none !important;
+    direction: ltr !important;
+    unicode-bidi: normal !important;
+}
+
+/* Prevent any parent from creating a flipped coordinate system */
+#card.story-mode #storyBook,
+#card.story-mode #storyBook .story-page,
+#card.story-mode #storyBook .story-page img {
+    writing-mode: horizontal-tb !important;
+}
