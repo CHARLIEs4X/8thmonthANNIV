@@ -307,255 +307,309 @@ color:#ff4d88;
 margin-bottom:18px;
 }
 
-/* ================= STORY BOOK ================= */
+/* ================================
+   STORY BOOK
+================================ */
 
 #storyBook{
-display:none;
-max-width:900px;
-margin:70px auto;
-animation:fadeStory 1s;
+    display:none;
+    width:100%;
+    max-width:900px;
+    margin:70px auto;
+    padding:0 20px;
+    animation:fadeStory 1s ease;
+    
+    /* IMPORTANT: remove card 3D effects */
+    transform:none !important;
+    transform-style:flat !important;
+    perspective:none !important;
+    backface-visibility:visible !important;
+    -webkit-transform:none !important;
+    -webkit-transform-style:flat !important;
+    -webkit-backface-visibility:visible !important;
 }
+
+
+/* ================================
+   STORY PAGE
+================================ */
 
 .story-page{
-background:white;
-border-radius:20px;
-padding:35px;
-margin:35px auto;
-box-shadow:0 12px 30px rgba(0,0,0,.15);
-text-align:center;
+    position:relative;
+    width:100%;
+    background:#fff;
+    border-radius:20px;
+    padding:35px;
+    margin:35px auto;
+    box-shadow:0 12px 30px rgba(0,0,0,.15);
+    text-align:center;
+
+    /* Kill all 3D card effects */
+    transform:none !important;
+    transform-style:flat !important;
+    perspective:none !important;
+    backface-visibility:visible !important;
+    -webkit-transform:none !important;
+    -webkit-transform-style:flat !important;
+    -webkit-backface-visibility:visible !important;
+
+    /* JS controls the fade/slide */
+    transition:opacity 1s ease, transform 1s ease;
 }
 
+
+/* ================================
+   STORY PHOTOS
+================================ */
+
+.story-page img{
+    display:block;
+
+    width:auto;
+    height:auto;
+
+    max-width:100%;
+    max-height:500px;
+
+    margin:20px auto;
+
+    object-fit:contain;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.20);
+
+    /* IMPORTANT */
+    transform:none !important;
+    transform-origin:center center;
+    backface-visibility:visible !important;
+    -webkit-transform:none !important;
+    -webkit-backface-visibility:visible !important;
+
+    /* Prevent image from being squeezed */
+    aspect-ratio:auto;
+}
+
+
+/* ================================
+   STORY HEADINGS
+================================ */
+
 .story-page h1{
-font-family:'Lobster',cursive;
-font-size:48px;
-color:#ff4d88;
-margin-bottom:15px;
+    font-family:'Lobster',cursive;
+    font-size:48px;
+    color:#ff4d88;
+    margin-bottom:15px;
 }
 
 .story-page h2{
-font-size:30px;
-color:#ff4d88;
-margin-bottom:20px;
+    font-family:'Poppins',sans-serif;
+    font-size:30px;
+    color:#ff4d88;
+    margin:20px 0;
 }
+
+
+/* ================================
+   STORY TEXT
+================================ */
 
 .story-page p{
-font-size:19px;
-line-height:1.8;
-font-family:'Indie Flower',cursive;
-color:#555;
+    font-size:19px;
+    line-height:1.8;
+    font-family:'Indie Flower',cursive;
+    color:#555;
+    margin-top:15px;
 }
 
-.story-page img{
-width:100%;
-max-width:450px;
-border-radius:18px;
-margin-top:20px;
-box-shadow:0 10px 20px rgba(0,0,0,.2);
-}
+
+/* ================================
+   STORY BUTTON
+================================ */
 
 .story-btn{
-text-align:center;
-margin-top:40px;
+    text-align:center;
+    margin-top:40px;
 }
 
 .story-btn button{
-padding:14px 35px;
-background:#ff4d88;
-color:white;
-border:none;
-border-radius:30px;
-cursor:pointer;
-font-size:18px;
-transition:.3s;
+    padding:14px 35px;
+    background:#ff4d88;
+    color:white;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:18px;
+    transition:.3s;
 }
 
 .story-btn button:hover{
-transform:scale(1.05);
-background:#ff2d74;
+    transform:scale(1.05);
+    background:#ff2d74;
 }
+
+
+/* ================================
+   STORY FADE
+================================ */
 
 @keyframes fadeStory{
-from{
-opacity:0;
-transform:translateY(50px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
-/* ================= HEARTS ================= */
+
+/* ================================
+   HEARTS
+================================ */
 
 .hearts{
-position:fixed;
-inset:0;
-pointer-events:none;
-overflow:hidden;
-z-index:9999;
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:9999;
 }
 
 .heart{
-position:absolute;
-bottom:-20px;
-color:#ff4d88;
-font-size:20px;
-animation:heartFloat linear forwards;
+    position:absolute;
+    bottom:-20px;
+    color:#ff4d88;
+    font-size:20px;
+    animation:heartFloat linear forwards;
 }
 
 @keyframes heartFloat{
-0%{
-transform:translateY(0) scale(.6);
-opacity:0;
-}
-20%{
-opacity:1;
-}
-100%{
-transform:translateY(-110vh) scale(1.5);
-opacity:0;
-}
+    0%{
+        transform:translateY(0) scale(.6);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-110vh) scale(1.5);
+        opacity:0;
+    }
 }
 
-/* ================= MOBILE ================= */
+
+/* ================================
+   MOBILE
+================================ */
 
 @media(max-width:900px){
 
-body{
-overflow-x:hidden;
+    body{
+        overflow-x:hidden;
+    }
+
+    #card{
+        width:100%;
+        height:auto;
+        transform:none;
+        position:relative;
+        margin-top:20px;
+    }
+
+    #card-front,
+    #card-inside{
+        width:100%;
+        left:0;
+        height:700px;
+    }
+
+    #card h1{
+        font-size:42px;
+    }
+
+    .wrap{
+        padding:20px;
+    }
+
+    .story-page{
+        width:100%;
+        margin:20px auto;
+        padding:20px;
+    }
+
+    .story-page h1{
+        font-size:36px;
+    }
+
+    .story-page h2{
+        font-size:25px;
+    }
+
+    .story-page p{
+        font-size:17px;
+    }
+
+    .story-page img{
+        width:auto;
+        max-width:100%;
+        max-height:450px;
+        height:auto;
+        object-fit:contain;
+    }
+
+    .wishesFont{
+        font-size:18px;
+    }
 }
 
-#card{
-width:100%;
-height:auto;
-transform:none;
-position:relative;
-margin-top:20px;
+
+/* ================================
+   ABSOLUTE 3D RESET FOR STORY
+================================ */
+
+/*
+   The original greeting-card CSS uses
+   rotateY / perspective. Those effects
+   must NOT affect the story photos.
+*/
+
+#storyBook,
+#storyBook *,
+#storyBook img{
+    perspective:none !important;
+    transform-style:flat !important;
 }
 
-#card-front,
-#card-inside{
-width:100%;
-left:0;
-height:700px;
+#storyBook img{
+    transform:translateZ(0) !important;
+    rotate:0deg !important;
+    scale:1 !important;
 }
 
-#card h1{
-font-size:42px;
+#card.story-mode,
+#card.story-mode #storyBook,
+#card.story-mode .story-page,
+#card.story-mode .story-page img{
+    perspective:none !important;
+    transform-style:flat !important;
+    backface-visibility:visible !important;
+    -webkit-backface-visibility:visible !important;
 }
 
-.wrap{
-padding:20px;
-}
 
-.polaroid{
-width:180px;
-height:230px;
-}
-
-.story-page{
-margin:15px;
-padding:20px;
-}
-
-.story-page h1{
-font-size:36px;
-}
-
-.story-page p{
-font-size:17px;
-}
-
-.story-page img{
-max-width:100%;
-}
-
-.wishesFont{
-font-size:18px;
-}
-}
-/* ===========================
-   FIX INSIDE MESSAGE
-=========================== */
-
-#card{
-    overflow:visible;
-}
-
-#card-inside{
-    overflow-y:auto;
-    overflow-x:hidden;
-}
-
-.inside-content{
-    padding:35px;
-    min-height:100%;
-}
-
-.inside-content h2{
-    text-align:center;
-    font-size:32px;
-    color:#ff4d88;
-    margin-bottom:25px;
-}
-
-.inside-content p{
-    font-family:'Poppins',sans-serif;
-    font-size:18px;
-    line-height:1.9;
-    color:#444;
-    white-space:normal;
-    word-break:break-word;
-}
-
-.inside-content::-webkit-scrollbar{
-    width:8px;
-}
-
-.inside-content::-webkit-scrollbar-thumb{
-    background:#ff7aa8;
-    border-radius:20px;
-}
-/* ===========================
-   REMOVE EMPTY PHOTO FRAME
-=========================== */
+/* ================================
+   REMOVE OLD EMPTY PHOTO FRAME
+================================ */
 
 .card-front_inside{
-    background: transparent;
+    background:transparent;
 }
 
 .shadow{
-    display: none;
-}
-#storyBook,
-.story-page{
-    transform: none !important;
-    -webkit-transform: none !important;
-    backface-visibility: visible !important;
-    -webkit-backface-visibility: visible !important;
-}
-/* ================================
-   STORY BOOK 3D FIX
-================================ */
-
-#card.story-mode{
-    transform:none !important;
-    transform-style:flat !important;
-    perspective:none !important;
-}
-
-#card.story-mode #storyBook{
-    transform:none !important;
-    transform-style:flat !important;
-    perspective:none !important;
-}
-
-#card.story-mode .story-page{
-    transform-style:flat !important;
-    backface-visibility:visible !important;
-}
-
-#card.story-mode .story-page img{
-    transform:none !important;
-    backface-visibility:visible !important;
+    display:none;
 }
