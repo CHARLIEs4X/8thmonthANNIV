@@ -527,3 +527,10 @@ font-size:18px;
 .shadow{
     display: none;
 }
+#storyBook,
+.story-page{
+    transform: none !important;
+    -webkit-transform: none !important;
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+}
