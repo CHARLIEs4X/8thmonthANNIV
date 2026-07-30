@@ -670,3 +670,90 @@ margin-bottom:18px;
 #card.story-mode #storyBook .story-page img {
     writing-mode: horizontal-tb !important;
 }
+/* ==========================================
+   STORY MODE — REMOVE CARD FLIP COMPLETELY
+========================================== */
+
+#card.story-mode {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+
+    margin: 0 auto !important;
+
+    transform: none !important;
+    perspective: none !important;
+    transform-style: flat !important;
+}
+
+/* Hide the actual greeting card once story starts */
+#card.story-mode #card-front,
+#card.story-mode #card-inside {
+    display: none !important;
+}
+
+/* Story itself */
+#card.story-mode #storyBook {
+    display: block !important;
+
+    position: relative !important;
+    width: 100% !important;
+    max-width: 900px !important;
+
+    margin: 40px auto !important;
+    padding: 0 20px !important;
+
+    transform: none !important;
+    perspective: none !important;
+    transform-style: flat !important;
+
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+}
+
+/* Story cards */
+#card.story-mode .story-page {
+    position: relative !important;
+
+    transform: none !important;
+    perspective: none !important;
+    transform-style: flat !important;
+
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+}
+
+/* Photos */
+#card.story-mode .story-page img {
+    display: block !important;
+
+    transform: none !important;
+    -webkit-transform: none !important;
+
+    transform-style: flat !important;
+    -webkit-transform-style: flat !important;
+
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+
+    rotate: 0deg !important;
+    scale: 1 !important;
+}
+
+/* Text */
+#card.story-mode .story-page h1,
+#card.story-mode .story-page h2,
+#card.story-mode .story-page p {
+    transform: none !important;
+    -webkit-transform: none !important;
+
+    direction: ltr !important;
+    unicode-bidi: normal !important;
+}
