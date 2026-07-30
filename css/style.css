@@ -1,673 +1,497 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-body {
-  background: #E5E5E5;
-  background-image: url("bg.jpg");
-}
-
-#card-front {
-  color: #FFDFDF;
-  z-index: 10;
-}
-
-#card, #card-front, #card-inside {
-  height: 580px;
-}
-
-.wrap {
-  padding: 1.5em 2.5em;
-  height: 100%;
-}
-
-#card-front, #card-inside {
-  width: 50%;
-  -webkit-box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.5);
-          box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.5);
-  position: absolute;
-  left: 50%;
-}
-
-#card-inside .wrap {
-  background: #FFEFEF;
-  -webkit-box-shadow: inset 2px 0 1px rgba(0, 0, 0, 0.05);
-          box-shadow: inset 2px 0 1px rgba(0, 0, 0, 0.05);
-}
-
-#card {
-  width: 960px;
-  margin: auto;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-perspective: 5000px;
-          perspective: 5000px;
-  -webkit-transform: translateX(-25%);
-          transform: translateX(-25%);
-  -webkit-transition: -webkit-transform 1s ease-in-out;
-  transition: -webkit-transform 1s ease-in-out;
-  transition: transform 1s ease-in-out;
-  transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-
-#card h1 {
-  text-align: center;
-  font-family: 'Lobster', cursive;
-  font-style: italic;
-  font-size: 70px;
-  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15), 1px 1px 0 #ffc8c8, 2px 2px 0 #ff9696, 3px 3px 0 #ff7d7d;
-  color: #FFF;
-}
-
-#card-inside {
-  font-size: 1.3em;
-  line-height: 1.4;
-font-family: 'Lobster';
-  color: #331717;
-  font-style: italic;
-}
-
-p {
-  margin-top: 1em;
-}
-
-p:first-child {
-  margin-top: 0;
-}
-
-p.signed {
-  margin-top: 1em;
-  text-align: center;
-  font-family: 'Indie Flower', cursive;
-  font-weight: bold;
-  font-size: 0.75em;
-}
-
-#card-front {
-  background-color: #ee9ca7;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#FF5555), to(#FF7777));
-  background-image: linear-gradient(top, #FF5555 0%, #FF7777 100%);
-  -webkit-transform-origin: left;
-          transform-origin: left;
-  -webkit-transition: -webkit-transform 1s linear;
-  transition: -webkit-transform 1s linear;
-  transition: transform 1s linear;
-  transition: transform 1s linear, -webkit-transform 1s linear;
-  position: relative;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-perspective: 5000px;
-          perspective: 5000px;
-}
-
-#card-front:before {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: block;
-  background-color: #444;
-  -webkit-transform: translateZ(-1px);
-          transform: translateZ(-1px);
-}
-
-#card-front .wrap {
-  -webkit-transition: background 1s linear;
-  transition: background 1s linear;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-}
-
-#card-front button {
-  position: absolute;
-  bottom: 1em;
-  right: -12px;
-  background: #F44;
-  color: #FFF;
-  font-family: 'Lobster', cursive;
-  font-style: italic;
-  font-weight: bold;
-  font-size: 1.5em;
-  padding: .5em;
-  border: none;
-  cursor: pointer;
-  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.4);
-          box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.4);
-}
-
-#card-front button:hover,
-#card-front button:focus {
-  background: #F22;
-}
-
-#close {
-  display: none;
-}
-
-#card.open-fully {
-  -webkit-transform: translateX(0%);
-          transform: translateX(0%);
-}
-
-#card.open-fully #close,
-#card-open-half #close {
-  display: inline;
-}
-
-#card.open-fully #open {
-  display: none;
-}
-
-#card.open-half #card-front,
-#card.close-half #card-front {
-  -webkit-transform: rotateY(-90deg);
-          transform: rotateY(-90deg);
-}
-
-#card.open-half .shadow {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-#card.open-fully #card-front,
-#card.close-half #card-front {
-  background: #FFEFEF;
-}
-
-#card.open-fully #card-front {
-  -webkit-transform: rotateY(-180deg);
-          transform: rotateY(-180deg);
-}
-
-#card.open-fully .shadow {
-  background-color: rgba(0, 0, 0, 0);
-}
-
-footer {
-  max-width: 500px;
-  margin: 40px auto;
-font-family: 'Lobster', cursive;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #888;
-  text-align: center;
-}
-
-.cake_and_velas {
-  position: absolute;
-  bottom: 25%;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-}
-
-#cake {
-  display: block;
-  position: relative;
-  margin: -10em auto 0 auto;
-}
-
-.velas {
-  background: #ffffff;
-  border-radius: 10px;
-  position: absolute;
-  top: 228px;
-  left: 50%;
-  margin-left: -2.4px;
-  margin-top: -8.33333333px;
-  width: 5px;
-  height: 35px;
-  -webkit-transform: translateY(-300px);
-          transform: translateY(-300px);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-animation: in 500ms 5s ease-out forwards;
-          animation: in 500ms 5s ease-out forwards;
-}
-
-.velas:after,
-.velas:before {
-  background: rgba(255, 0, 0, 0.4);
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2.22222222px;
-}
-
-.velas:after {
-  top: 25%;
-  left: 0;
-}
-
-.velas:before {
-  top: 45%;
-  left: 0;
-}
-
-/* ============================================== Fire
-*/
-.fuego {
-  border-radius: 100%;
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  margin-left: -2.6px;
-  width: 6.66666667px;
-  height: 18px;
-}
-
-.fuego:nth-child(1) {
-  -webkit-animation: fuego 2s 5.5s infinite;
-          animation: fuego 2s 5.5s infinite;
-}
-
-.fuego:nth-child(2) {
-  -webkit-animation: fuego 1.5s 5.5s infinite;
-          animation: fuego 1.5s 5.5s infinite;
-}
-
-.fuego:nth-child(3) {
-  -webkit-animation: fuego 1s 5.5s infinite;
-          animation: fuego 1s 5.5s infinite;
-}
-
-.fuego:nth-child(4) {
-  -webkit-animation: fuego 0.5s 5.5s infinite;
-          animation: fuego 0.5s 5.5s infinite;
-}
-
-.fuego:nth-child(5) {
-  -webkit-animation: fuego 0.2s 5.5s infinite;
-          animation: fuego 0.2s 5.5s infinite;
-}
-
-/* ============================================== Animation Fire
-*/
-@-webkit-keyframes fuego {
-  0%, 100% {
-    background: rgba(254, 248, 97, 0.5);
-    -webkit-box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
-            box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
-    -webkit-transform: translateY(0) scale(1);
-            transform: translateY(0) scale(1);
-  }
-  50% {
-    background: rgba(255, 50, 0, 0.1);
-    -webkit-box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
-            box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
-    -webkit-transform: translateY(-20px) scale(0);
-            transform: translateY(-20px) scale(0);
-  }
-}
-@keyframes fuego {
-  0%, 100% {
-    background: rgba(254, 248, 97, 0.5);
-    -webkit-box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
-            box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
-    -webkit-transform: translateY(0) scale(1);
-            transform: translateY(0) scale(1);
-  }
-  50% {
-    background: rgba(255, 50, 0, 0.1);
-    -webkit-box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
-            box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
-    -webkit-transform: translateY(-20px) scale(0);
-            transform: translateY(-20px) scale(0);
-  }
-}
-@-webkit-keyframes in {
-  to {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-}
-@keyframes in {
-  to {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-}
-.text {
-  color: #8b6a60;
-  font-family: 'Lobster', cursive;
-  font-weight: 300;
-  font-style: italic;
-  text-align: center;
-}
-.text h1 {
-  font-size: 1.4em;
-}
-
-.card-front_inside {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 70%;
-  width: 80%;
-  margin: auto;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform: translateZ(-1px) rotateY(180deg);
-          transform: translateZ(-1px) rotateY(180deg);
-  background-color: #ffefef;
-}
-
-.shadow {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform: translateZ(-2px) rotateY(180deg);
-          transform: translateZ(-2px) rotateY(180deg);
-  pointer-events: none;
-  -webkit-transition: background 1s linear;
-  transition: background 1s linear;
-}
-
-.polaroid {
-  width: 240x;
-  height: 220px;
-  position: absolute;
-  float: left;
-  background: #1e1c18;
-  border: 7px solid #f5f5f5;
-  border-bottom: 50px solid #f5f5f5;
-  -webkit-box-shadow: 0 0 6px -1px #000;
-          box-shadow: 0 0 6px -1px #000;
-  overflow: hidden;
-  left: 0;
-  right: 0;
-  margin: auto;
-  -webkit-transform: rotate(-5deg);
-          transform: rotate(-5deg);
-  clear: both;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-}
-.polaroid img,
-.polaroid .img {
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  background-position: center;
-  background-size: cover;
-  -webkit-animation: fade-in 20s ease-in;
-          animation: fade-in 20s ease-in;
-  -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
-}
-
-.wishesFont{
-  font-family: 'Indie Flower', cursive;
-  font-weight: 800;
-}
-
-@-webkit-keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-/* ===============================
-   Anniversary Story Pages
-================================ */
-
-.hearts{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:999;
-}
-
-.heart{
-    position:absolute;
-    bottom:-30px;
-    color:#ff4d88;
-    animation:floatHeart linear forwards;
-    opacity:.8;
-    font-size:20px;
-}
-
-@keyframes floatHeart{
-    from{
-        transform:translateY(0) scale(.8);
-        opacity:0;
-    }
-
-    20%{
-        opacity:1;
-    }
-
-    to{
-        transform:translateY(-110vh) scale(1.4);
-        opacity:0;
-    }
-}
-
-.subtitle{
-    text-align:center;
-    color:white;
-    font-size:20px;
-    margin-top:-15px;
-    font-family:'Poppins',sans-serif;
-}
-
-#storyBook{
-
-    display:none;
-
-    max-width:900px;
-
-    margin:50px auto;
-
-    animation:fadeIn 1.2s;
-
-}
-
-.story-page{
-
-    background:white;
-
-    border-radius:20px;
-
-    padding:35px;
-
-    margin:40px auto;
-
-    box-shadow:0 15px 35px rgba(0,0,0,.18);
-
-    text-align:center;
-
-    animation:fadeUp .9s;
-
-}
-
-.story-page h1{
-
-    color:#ff4d88;
-
-    font-family:'Great Vibes',cursive;
-
-    font-size:60px;
-
-}
-
-.story-page h2{
-
-    color:#ff4d88;
-
-    margin-top:25px;
-
-    font-family:'Poppins',sans-serif;
-
-}
-
-.story-page p{
-
-    font-size:19px;
-
-    line-height:1.9;
 
-    color:#555;
-
-    font-family:'Poppins',sans-serif;
-
-}
-
-.story-page img{
-
-    width:100%;
-
-    max-width:450px;
-
-    border-radius:20px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.2);
-
-}
-
-.story-btn{
-
-    text-align:center;
-
-    margin-top:35px;
-
-}
-
-.story-btn button{
-
-    background:#ff4d88;
-
-    color:white;
-
-    border:none;
-
-    padding:14px 40px;
-
-    border-radius:30px;
-
-    cursor:pointer;
-
-    font-size:18px;
-
-    transition:.3s;
-
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
-
-.story-btn button:hover{
-
-    transform:scale(1.08);
 
-    background:#ff2f73;
-
+body{
+    background:#E5E5E5;
+    background-image:url("bg.jpg");
+    background-size:cover;
+    background-attachment:fixed;
+    overflow-x:hidden;
 }
-
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(70px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
 
-    }
-
+#card-front{
+    color:#FFDFDF;
+    z-index:10;
 }
-
-@keyframes fadeIn{
-
-    from{
-
-        opacity:0;
-
-    }
-
-    to{
 
-        opacity:1;
-
-    }
-
+#card,
+#card-front,
+#card-inside{
+    height:700px;
+    min-height:700px;
 }
-
-@media(max-width:900px){
-
-#card{
-
-width:100%;
-
-transform:none;
 
+.wrap{
+    padding:30px;
+    height:100%;
+    overflow-y:auto;
 }
 
 #card-front,
+#card-inside{
+    width:50%;
+    position:absolute;
+    left:50%;
+    box-shadow:2px 2px 30px rgba(0,0,0,.25),0 0 1px rgba(0,0,0,.5);
+}
+
+#card-inside .wrap{
+    background:#FFEFEF;
+    box-shadow:inset 2px 0 1px rgba(0,0,0,.05);
+}
+
+#card{
+    width:960px;
+    margin:auto;
+    transform-style:preserve-3d;
+    perspective:5000px;
+    transform:translateX(-25%);
+    transition:1s ease-in-out;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+#card h1{
+    text-align:center;
+    font-family:'Lobster',cursive;
+    font-size:64px;
+    color:#fff;
+    text-shadow:4px 4px 0 rgba(0,0,0,.15),
+                1px 1px 0 #ffc8c8,
+                2px 2px 0 #ff9696,
+                3px 3px 0 #ff7d7d;
+}
 
 #card-inside{
+    font-family:'Indie Flower',cursive;
+    font-size:18px;
+    line-height:1.7;
+    color:#331717;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
 
-width:100%;
+p{
+    margin-top:15px;
+}
 
+p:first-child{
+    margin-top:0;
+}
+
+.signed{
+    text-align:center;
+    margin-top:25px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+#card-front{
+    background:#ff6b81;
+    transform-origin:left;
+    transition:transform 1s linear;
+    position:relative;
+    transform-style:preserve-3d;
+    perspective:5000px;
+}
+
+#card-front:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:#444;
+    transform:translateZ(-1px);
+}
+
+#card-front .wrap{
+    transition:1s;
+    backface-visibility:hidden;
+}
+
+#card-front button{
+    position:absolute;
+    bottom:20px;
+    right:-12px;
+    background:#F44;
+    color:#fff;
+    border:none;
+    padding:12px;
+    font-size:24px;
+    cursor:pointer;
+    font-family:'Lobster',cursive;
+    box-shadow:2px 2px 8px rgba(0,0,0,.3);
+}
+
+#card-front button:hover{
+    background:#ff2e55;
+}
+
+#close{
+    display:none;
+}
+
+#card.open-fully{
+    transform:translateX(0);
+}
+
+#card.open-half #card-front,
+#card.close-half #card-front{
+    transform:rotateY(-90deg);
+}
+
+#card.open-fully #card-front{
+    transform:rotateY(-180deg);
+    background:#FFEFEF;
+}
+
+#card.open-fully #open{
+    display:none;
+}
+
+#card.open-fully #close{
+    display:block;
+}
+
+.cake_and_velas{
+    position:absolute;
+    bottom:25%;
+    left:0;
+    right:0;
+    overflow:hidden;
+}
+
+#cake{
+    display:block;
+    margin:-10em auto 0;
+}
+
+.velas{
+    background:#fff;
+    border-radius:10px;
+    position:absolute;
+    top:228px;
+    left:50%;
+    width:5px;
+    height:35px;
+    margin-left:-2.5px;
+    transform:translateY(-300px);
+    animation:in .5s 5s forwards;
+}
+
+.velas:before,
+.velas:after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:2px;
+    background:rgba(255,0,0,.4);
+}
+
+.velas:before{
+    top:45%;
+}
+
+.velas:after{
+    top:25%;
+}
+/* ============================================== Fire
+*/
+/* ================= FIRE ================= */
+
+.fuego{
+    border-radius:100%;
+    position:absolute;
+    top:-20px;
+    left:50%;
+    margin-left:-2.6px;
+    width:7px;
+    height:18px;
+}
+
+.fuego:nth-child(1){animation:fuego 2s 5.5s infinite;}
+.fuego:nth-child(2){animation:fuego 1.5s 5.5s infinite;}
+.fuego:nth-child(3){animation:fuego 1s 5.5s infinite;}
+.fuego:nth-child(4){animation:fuego .5s 5.5s infinite;}
+.fuego:nth-child(5){animation:fuego .2s 5.5s infinite;}
+
+@keyframes fuego{
+0%,100%{
+background:rgba(254,248,97,.6);
+box-shadow:0 0 40px 10px rgba(248,233,209,.2);
+transform:translateY(0) scale(1);
+}
+50%{
+background:rgba(255,80,0,.15);
+box-shadow:0 0 40px 20px rgba(248,233,209,.25);
+transform:translateY(-20px) scale(0);
+}
+}
+
+@keyframes in{
+to{
+transform:translateY(0);
+}
+}
+
+.text{
+color:#8b6a60;
+font-family:'Lobster',cursive;
+text-align:center;
+}
+
+.text h1{
+font-size:1.5em;
+}
+
+/* ================= CARD PHOTO ================= */
+
+.card-front_inside{
+position:absolute;
+top:0;
 left:0;
+right:0;
+bottom:0;
+width:80%;
+height:70%;
+margin:auto;
+backface-visibility:hidden;
+transform:translateZ(-1px) rotateY(180deg);
+background:#ffefef;
+}
 
+.shadow{
+position:absolute;
+inset:0;
+transform:translateZ(-2px) rotateY(180deg);
+background:rgba(0,0,0,.25);
+transition:1s;
+pointer-events:none;
+}
+
+.polaroid{
+width:240px;
+height:290px;
+background:white;
+border:8px solid white;
+border-bottom:50px solid white;
+box-shadow:0 5px 15px rgba(0,0,0,.35);
+overflow:hidden;
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%) rotate(-5deg);
+}
+
+.polaroid .img,
+.polaroid img{
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+animation:fadeIn 1s;
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* ================= INSIDE TEXT ================= */
+
+.wishesFont{
+font-family:'Indie Flower',cursive;
+font-size:20px;
+font-weight:700;
+line-height:1.8;
+color:#5b2b2b;
+text-align:left;
+padding-bottom:40px;
+}
+
+.wishesFont h2{
+text-align:center;
+font-size:36px;
+margin-bottom:25px;
+color:#ff4d88;
+}
+
+.wishesFont p{
+margin-bottom:18px;
+}
+
+/* ================= STORY BOOK ================= */
+
+#storyBook{
+display:none;
+max-width:900px;
+margin:70px auto;
+animation:fadeStory 1s;
 }
 
 .story-page{
-
-margin:20px;
-
-padding:25px;
-
+background:white;
+border-radius:20px;
+padding:35px;
+margin:35px auto;
+box-shadow:0 12px 30px rgba(0,0,0,.15);
+text-align:center;
 }
 
 .story-page h1{
+font-family:'Lobster',cursive;
+font-size:48px;
+color:#ff4d88;
+margin-bottom:15px;
+}
 
-font-size:45px;
-
+.story-page h2{
+font-size:30px;
+color:#ff4d88;
+margin-bottom:20px;
 }
 
 .story-page p{
-
-font-size:17px;
-
+font-size:19px;
+line-height:1.8;
+font-family:'Indie Flower',cursive;
+color:#555;
 }
 
 .story-page img{
-
-max-width:100%;
-
+width:100%;
+max-width:450px;
+border-radius:18px;
+margin-top:20px;
+box-shadow:0 10px 20px rgba(0,0,0,.2);
 }
 
+.story-btn{
+text-align:center;
+margin-top:40px;
+}
+
+.story-btn button{
+padding:14px 35px;
+background:#ff4d88;
+color:white;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-size:18px;
+transition:.3s;
+}
+
+.story-btn button:hover{
+transform:scale(1.05);
+background:#ff2d74;
+}
+
+@keyframes fadeStory{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* ================= HEARTS ================= */
+
+.hearts{
+position:fixed;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+z-index:9999;
+}
+
+.heart{
+position:absolute;
+bottom:-20px;
+color:#ff4d88;
+font-size:20px;
+animation:heartFloat linear forwards;
+}
+
+@keyframes heartFloat{
+0%{
+transform:translateY(0) scale(.6);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-110vh) scale(1.5);
+opacity:0;
+}
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+body{
+overflow-x:hidden;
+}
+
+#card{
+width:100%;
+height:auto;
+transform:none;
+position:relative;
+margin-top:20px;
+}
+
+#card-front,
+#card-inside{
+width:100%;
+left:0;
+height:700px;
+}
+
+#card h1{
+font-size:42px;
+}
+
+.wrap{
+padding:20px;
+}
+
+.polaroid{
+width:180px;
+height:230px;
+}
+
+.story-page{
+margin:15px;
+padding:20px;
+}
+
+.story-page h1{
+font-size:36px;
+}
+
+.story-page p{
+font-size:17px;
+}
+
+.story-page img{
+max-width:100%;
+}
+
+.wishesFont{
+font-size:18px;
+}
 }
