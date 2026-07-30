@@ -91,7 +91,6 @@ function createHeart() {
 
 setInterval(createHeart, 450);
 
-
 // ================================
 // STORY BUTTON
 // ================================
@@ -104,48 +103,30 @@ if (storyBtn && storyBook && card) {
 
     storyBtn.onclick = function () {
 
-        // --------------------------------
-        // REMOVE ALL GREETING CARD STATES
-        // --------------------------------
-
+        // Remove all greeting-card flip states
         card.classList.remove("open-half");
         card.classList.remove("open-fully");
         card.classList.remove("close-half");
 
-        // --------------------------------
-        // ACTIVATE STORY MODE
-        // --------------------------------
-
+        // Activate story mode
         card.classList.add("story-mode");
 
-        // --------------------------------
-        // SHOW STORY
-        // --------------------------------
-
+        // Show story
         storyBook.style.display = "block";
 
-        // --------------------------------
-        // REMOVE 3D TRANSFORM
-        // --------------------------------
-
+        // Remove 3D transformations
         card.style.transform = "none";
         card.style.webkitTransform = "none";
-
         card.style.transformStyle = "flat";
         card.style.webkitTransformStyle = "flat";
-
         card.style.perspective = "none";
 
         storyBook.style.transform = "none";
         storyBook.style.webkitTransform = "none";
-
         storyBook.style.transformStyle = "flat";
         storyBook.style.webkitTransformStyle = "flat";
 
-        // --------------------------------
-        // RESET STORY PAGES
-        // --------------------------------
-
+        // Reset story pages
         document.querySelectorAll(".story-page").forEach(function(page) {
 
             page.style.opacity = "0";
@@ -159,7 +140,7 @@ if (storyBtn && storyBook && card) {
             page.style.transformStyle = "flat";
             page.style.webkitTransformStyle = "flat";
 
-            // Reset photos specifically
+            // Reset story images
             const image = page.querySelector("img");
 
             if (image) {
@@ -179,10 +160,7 @@ if (storyBtn && storyBook && card) {
 
         });
 
-        // --------------------------------
-        // SCROLL TO STORY
-        // --------------------------------
-
+        // Scroll to story
         setTimeout(function () {
 
             storyBook.scrollIntoView({
