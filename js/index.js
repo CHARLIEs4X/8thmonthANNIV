@@ -100,15 +100,33 @@ const storyBtn = document.getElementById("nextPage");
 const storyBook = document.getElementById("storyBook");
 const card = document.getElementById("card");
 
-if (storyBtn && storyBook && card) {
+if (storyBtn) {
 
     storyBtn.onclick = function () {
 
         // Show story
         storyBook.style.display = "block";
 
-        // Disable the greeting card's 3D environment
+        // Activate story mode
         card.classList.add("story-mode");
+
+        // Remove ALL 3D transformations
+        card.style.transform = "none";
+        card.style.transformStyle = "flat";
+        card.style.perspective = "none";
+
+        storyBook.style.transform = "none";
+        storyBook.style.transformStyle = "flat";
+
+        // Make sure every story page is normal
+        document.querySelectorAll(".story-page").forEach(page => {
+
+            page.style.transform = "translateY(60px)";
+            page.style.backfaceVisibility = "visible";
+            page.style.webkitBackfaceVisibility = "visible";
+            page.style.transformStyle = "flat";
+
+        });
 
         // Scroll to story
         setTimeout(function () {
@@ -123,7 +141,6 @@ if (storyBtn && storyBook && card) {
     };
 
 }
-
 
 // ================================
 // STORY PAGE FADE ANIMATION
