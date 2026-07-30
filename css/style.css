@@ -433,3 +433,241 @@ font-family: 'Lobster', cursive;
     opacity: 1;
   }
 }
+/* ===============================
+   Anniversary Story Pages
+================================ */
+
+.hearts{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:999;
+}
+
+.heart{
+    position:absolute;
+    bottom:-30px;
+    color:#ff4d88;
+    animation:floatHeart linear forwards;
+    opacity:.8;
+    font-size:20px;
+}
+
+@keyframes floatHeart{
+    from{
+        transform:translateY(0) scale(.8);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-110vh) scale(1.4);
+        opacity:0;
+    }
+}
+
+.subtitle{
+    text-align:center;
+    color:white;
+    font-size:20px;
+    margin-top:-15px;
+    font-family:'Poppins',sans-serif;
+}
+
+#storyBook{
+
+    display:none;
+
+    max-width:900px;
+
+    margin:50px auto;
+
+    animation:fadeIn 1.2s;
+
+}
+
+.story-page{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    margin:40px auto;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
+
+    text-align:center;
+
+    animation:fadeUp .9s;
+
+}
+
+.story-page h1{
+
+    color:#ff4d88;
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:60px;
+
+}
+
+.story-page h2{
+
+    color:#ff4d88;
+
+    margin-top:25px;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+.story-page p{
+
+    font-size:19px;
+
+    line-height:1.9;
+
+    color:#555;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+.story-page img{
+
+    width:100%;
+
+    max-width:450px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+
+}
+
+.story-btn{
+
+    text-align:center;
+
+    margin-top:35px;
+
+}
+
+.story-btn button{
+
+    background:#ff4d88;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 40px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.story-btn button:hover{
+
+    transform:scale(1.08);
+
+    background:#ff2f73;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(70px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@media(max-width:900px){
+
+#card{
+
+width:100%;
+
+transform:none;
+
+}
+
+#card-front,
+
+#card-inside{
+
+width:100%;
+
+left:0;
+
+}
+
+.story-page{
+
+margin:20px;
+
+padding:25px;
+
+}
+
+.story-page h1{
+
+font-size:45px;
+
+}
+
+.story-page p{
+
+font-size:17px;
+
+}
+
+.story-page img{
+
+max-width:100%;
+
+}
+
+}
